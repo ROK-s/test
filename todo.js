@@ -14,7 +14,7 @@ function deleteToDo(event) {
         return toDo.id !== parseInt(li.id);
     });
     toDos = cleanToDos;
-    saveToDos;
+    saveToDos();
 }
 
 function saveToDos() {
@@ -24,13 +24,13 @@ function saveToDos() {
 function paintToDo(text) {
     const li = document.createElement("li");
     const delBtn = document.createElement("button");
-    delBtn.value = "❌";
+    delBtn.innerHTML = "❌";
     delBtn.addEventListener("click", deleteToDo);
     const span = document.createElement("span");
     const newId = toDos.length +1;
     span.innerText = text;
-    li.appendChild(span);
     li.appendChild(delBtn);
+    li.appendChild(span);
     li.id = newId;
     toDoUl.appendChild(li);
     const toDoObj = {
